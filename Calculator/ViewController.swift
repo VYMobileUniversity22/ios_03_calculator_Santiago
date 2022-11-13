@@ -8,50 +8,55 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        resultado()
+
+        resultLabel.text = defaults.string(forKey: "resultado")
+
+        let hide = defaults.bool(forKey: "enabled_preference")
+        hideButton(hide: hide)
     }
-    @IBOutlet weak var resultLabel: UILabel!
-    //Numbers
-    @IBOutlet weak var btn1: UIButton!
-    @IBOutlet weak var btn2: UIButton!
-    @IBOutlet weak var btn3: UIButton!
-    @IBOutlet weak var btn4: UIButton!
-    @IBOutlet weak var btn5: UIButton!
-    @IBOutlet weak var btn6: UIButton!
-    @IBOutlet weak var btn7: UIButton!
-    @IBOutlet weak var btn8: UIButton!
-    @IBOutlet weak var btn9: UIButton!
-    @IBOutlet weak var btn0: UIButton!
-    @IBOutlet weak var btnDecimal: UIButton!
-    
-    //Operators
-    
-    @IBOutlet weak var btnRestart: UIButton!
-    @IBOutlet weak var btnDiv: UIButton!
-    @IBOutlet weak var btnMult: UIButton!
-    @IBOutlet weak var btnRes: UIButton!
-    @IBOutlet weak var btnSum: UIButton!
-    @IBOutlet weak var btnEqual: UIButton!
-    
+
+    let defaults = UserDefaults.standard
+    @IBOutlet var resultLabel: UILabel!
+    // Numbers
+    @IBOutlet var btn1: UIButton!
+    @IBOutlet var btn2: UIButton!
+    @IBOutlet var btn3: UIButton!
+    @IBOutlet var btn4: UIButton!
+    @IBOutlet var btn5: UIButton!
+    @IBOutlet var btn6: UIButton!
+    @IBOutlet var btn7: UIButton!
+    @IBOutlet var btn8: UIButton!
+    @IBOutlet var btn9: UIButton!
+    @IBOutlet var btn0: UIButton!
+    @IBOutlet var btnDecimal: UIButton!
+
+    // Operators
+    @IBOutlet var btnRestart: UIButton!
+    @IBOutlet var btnDiv: UIButton!
+    @IBOutlet var btnMult: UIButton!
+    @IBOutlet var btnRes: UIButton!
+    @IBOutlet var btnSum: UIButton!
+    @IBOutlet var btnPorcent: UIButton!
+    @IBOutlet var btnEqual: UIButton!
+
     var result: Double = 0
     var actual: Double = 0
     var operating = false
     var decimal = false
     var operation: OperationType = .none
-    
+
     let kdecimalSeparator = Locale.current.decimalSeparator
     let maxLenght = 9
     let maxValue: Double = 999999999
     let minValue: Double = 0.00000001
-    enum OperationType{
-        case none, sum, res, mult, div
+    enum OperationType {
+        case none, sum, res, mult, div, percent
     }
-    
-    //Formateo de valores
+
+    // Formateo de valores
     let auxFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         let locale = Locale.current
@@ -60,8 +65,8 @@ class ViewController: UIViewController {
         formatter.numberStyle = .decimal
         return formatter
     }()
-    
-    //Formatear valores por defecto
+
+    // Formatear valores por defecto
     let printFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         let locale = Locale.current
@@ -73,90 +78,98 @@ class ViewController: UIViewController {
         formatter.maximumIntegerDigits = 8
         return formatter
     }()
-    
-    
-    //Actions Operators
+
+    // Actions Operators
     @IBAction func operatorRestart(_ sender: Any) {
         clear()
     }
+
     @IBAction func operatorDiv(_ sender: UIButton) {
         resultado()
-        operating=true
+        operating = true
         operation = .div
-
     }
+
     @IBAction func operatorMult(_ sender: UIButton) {
         resultado()
-        operating=true
+        operating = true
         operation = .mult
-
     }
+
     @IBAction func operatorRes(_ sender: UIButton) {
         resultado()
-        operating=true
+        operating = true
         operation = .res
-
     }
+
     @IBAction func operatorSum(_ sender: UIButton) {
         resultado()
-        operating=true
+        operating = true
         operation = .sum
     }
+
     @IBAction func operatorEqual(_ sender: UIButton) {
         resultado()
     }
+
+    @IBAction func operatorPercent(_ sender: UIButton) {
+        operating = true
+        operation = .percent
+        resultado()
+    }
+
     @IBAction func operatorDecimal(_ sender: UIButton) {
         let currentActual = auxFormatter.string(from: NSNumber(value: actual))!
-        if !operating && currentActual.count >= maxLenght{
+        if !operating && currentActual.count >= maxLenght {
             return
         }
         resultLabel.text = resultLabel.text! + (kdecimalSeparator ?? "")
         decimal = true
     }
+
     @IBAction func numberAction(_ sender: UIButton) {
-        
         btnRestart.setTitle("C", for: .normal)
-        
+
         var currentActual = auxFormatter.string(from: NSNumber(value: actual))!
-        if !operating && currentActual.count >= maxLenght{
+        if !operating && currentActual.count >= maxLenght {
             return
         }
-        
-        if operating{
+
+        if operating {
             result = result == 0 ? actual : result
             resultLabel.text = ""
             currentActual = ""
             operating = false
         }
-        
+
         if decimal {
             currentActual = "\(currentActual)\(kdecimalSeparator ?? "")"
             decimal = false
         }
-        
+
         let number = sender.tag
         actual = Double(currentActual + String(number))!
         resultLabel.text = printFormatter.string(from: NSNumber(value: actual))
-        print(sender.tag)
     }
-    
-    //Limpiar valores
-    func clear(){
+
+    // Clean vals
+    func clear() {
         operation = .none
         btnRestart.setTitle("AC", for: .normal)
         if actual != 0 {
             actual = 0
             resultLabel.text = "0"
-        }else{
+        } else {
             result = 0
             resultado()
         }
     }
     
-    func resultado(){
-        switch operation{
+    //Cases operators
+    func resultado() {
+        switch operation {
         case .none:
-            //no hara nada
+            // no hara nada
             break
         case .sum:
             result = result + actual
@@ -170,13 +183,20 @@ class ViewController: UIViewController {
         case .div:
             result = result / actual
             break
+        case .percent:
+            actual = actual / 100
+            result = actual
         }
-        
+
         if result <= maxValue || result >= minValue {
             resultLabel.text = printFormatter.string(from: NSNumber(value: result))
         }
-       
+
+        defaults.set(result, forKey: "resultado")
     }
     
+    //Func hide button
+    func hideButton(hide: Bool) {
+        btnDecimal.isHidden = hide
+    }
 }
-
