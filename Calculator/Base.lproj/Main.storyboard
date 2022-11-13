@@ -318,23 +318,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btn0" destination="t7Z-yA-haK" id="0nu-zh-9WN"/>
-                        <outlet property="btn1" destination="tiB-XT-RlG" id="xoa-cK-ER7"/>
-                        <outlet property="btn2" destination="mAG-KZ-dG7" id="mEB-7l-Cmc"/>
-                        <outlet property="btn3" destination="0vj-MY-gFs" id="ZS8-3A-jgm"/>
-                        <outlet property="btn4" destination="xOE-tL-IJr" id="asM-Al-6i4"/>
-                        <outlet property="btn5" destination="Fmx-5y-3tq" id="YAV-Sn-QXn"/>
-                        <outlet property="btn6" destination="ua7-Kd-DD4" id="kRK-TY-p4b"/>
-                        <outlet property="btn7" destination="AL6-V1-c1D" id="ruA-Kv-xbG"/>
-                        <outlet property="btn8" destination="R88-9f-OPO" id="4Bd-2V-d2D"/>
-                        <outlet property="btn9" destination="Obw-0k-Igg" id="70H-Bc-ySn"/>
-                        <outlet property="btnDecimal" destination="6KI-qc-Aga" id="9dF-gc-WXA"/>
-                        <outlet property="btnDiv" destination="bee-DZ-oI2" id="Pmd-c8-DEs"/>
-                        <outlet property="btnMult" destination="t19-ul-gj3" id="uJs-n0-FiZ"/>
-                        <outlet property="btnPorcent" destination="lxb-mF-MP5" id="qQA-Df-rpZ"/>
-                        <outlet property="btnRes" destination="hDQ-h8-Ahg" id="uDd-Ss-Trp"/>
                         <outlet property="btnRestart" destination="JrJ-NC-mPt" id="3CN-KU-X5D"/>
-                        <outlet property="btnSum" destination="AC5-KB-AtG" id="loI-BE-etV"/>
                         <outlet property="resultLabel" destination="hQC-7y-juM" id="TPW-G7-Gc9"/>
                     </connections>
                 </viewController>

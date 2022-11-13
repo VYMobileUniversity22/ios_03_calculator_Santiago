@@ -15,33 +15,14 @@ class ViewController: UIViewController {
         resultLabel.text = defaults.string(forKey: "resultado")
 
         let hide = defaults.bool(forKey: "enabled_preference")
-        hideButton(hide: hide)
     }
 
     let defaults = UserDefaults.standard
     @IBOutlet var resultLabel: UILabel!
-    // Numbers
-    @IBOutlet var btn1: UIButton!
-    @IBOutlet var btn2: UIButton!
-    @IBOutlet var btn3: UIButton!
-    @IBOutlet var btn4: UIButton!
-    @IBOutlet var btn5: UIButton!
-    @IBOutlet var btn6: UIButton!
-    @IBOutlet var btn7: UIButton!
-    @IBOutlet var btn8: UIButton!
-    @IBOutlet var btn9: UIButton!
-    @IBOutlet var btn0: UIButton!
-    @IBOutlet var btnDecimal: UIButton!
-
+   
     // Operators
     @IBOutlet var btnRestart: UIButton!
-    @IBOutlet var btnDiv: UIButton!
-    @IBOutlet var btnMult: UIButton!
-    @IBOutlet var btnRes: UIButton!
-    @IBOutlet var btnSum: UIButton!
-    @IBOutlet var btnPorcent: UIButton!
-    @IBOutlet var btnEqual: UIButton!
-
+    
     var result: Double = 0
     var currentHandler: Double = 0
     var operating = false
@@ -195,8 +176,4 @@ class ViewController: UIViewController {
         defaults.set(result, forKey: "resultado")
     }
     
-    //Func hide button
-    func hideButton(hide: Bool) {
-        btnDecimal.isHidden = hide
-    }
 }
