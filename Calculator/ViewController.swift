@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     @IBOutlet var btnEqual: UIButton!
 
     var result: Double = 0
-    var actual: Double = 0
+    var currentHandler: Double = 0
     var operating = false
     var decimal = false
     var operation: OperationType = .none
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         case none, sum, res, mult, div, percent
     }
 
-    // Formateo de valores
+    // Format values
     let auxFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         let locale = Locale.current
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         return formatter
     }()
 
-    // Formatear valores por defecto
+    // Format values for default
     let printFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         let locale = Locale.current
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func operatorDecimal(_ sender: UIButton) {
-        let currentActual = auxFormatter.string(from: NSNumber(value: actual))!
+        let currentActual = auxFormatter.string(from: NSNumber(value: currentHandler))!
         if !operating && currentActual.count >= maxLenght {
             return
         }
@@ -130,13 +130,13 @@ class ViewController: UIViewController {
     @IBAction func numberAction(_ sender: UIButton) {
         btnRestart.setTitle("C", for: .normal)
 
-        var currentActual = auxFormatter.string(from: NSNumber(value: actual))!
+        var currentActual = auxFormatter.string(from: NSNumber(value: currentHandler))!
         if !operating && currentActual.count >= maxLenght {
             return
         }
 
         if operating {
-            result = result == 0 ? actual : result
+            result = result == 0 ? currentHandler : result
             resultLabel.text = ""
             currentActual = ""
             operating = false
@@ -148,16 +148,16 @@ class ViewController: UIViewController {
         }
 
         let number = sender.tag
-        actual = Double(currentActual + String(number))!
-        resultLabel.text = printFormatter.string(from: NSNumber(value: actual))
+        currentHandler = Double(currentActual + String(number))!
+        resultLabel.text = printFormatter.string(from: NSNumber(value: currentHandler))
     }
 
-    // Clean vals
+    // Clean values
     func clear() {
         operation = .none
         btnRestart.setTitle("AC", for: .normal)
-        if actual != 0 {
-            actual = 0
+        if currentHandler != 0 {
+            currentHandler = 0
             resultLabel.text = "0"
         } else {
             result = 0
@@ -172,20 +172,20 @@ class ViewController: UIViewController {
             // no hara nada
             break
         case .sum:
-            result = result + actual
+            result = result + currentHandler
             break
         case .res:
-            result = result - actual
+            result = result - currentHandler
             break
         case .mult:
-            result = result * actual
+            result = result * currentHandler
             break
         case .div:
-            result = result / actual
+            result = result / currentHandler
             break
         case .percent:
-            actual = actual / 100
-            result = actual
+            currentHandler = currentHandler / 100
+            result = currentHandler
         }
 
         if result <= maxValue || result >= minValue {
