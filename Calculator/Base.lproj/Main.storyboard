@@ -58,7 +58,7 @@
                                                             <action selector="operatorPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="az0-SJ-0kE"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bee-DZ-oI2">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bee-DZ-oI2">
                                                         <rect key="frame" x="102" y="0.0" width="82" height="82"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="bee-DZ-oI2" secondAttribute="height" multiplier="1:1" id="Nk5-eL-mEe"/>
@@ -68,7 +68,7 @@
                                                             <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="operatorDiv:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YOu-qB-ppn"/>
+                                                            <action selector="operatorPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rqu-aH-f9P"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -117,7 +117,7 @@
                                                     <action selector="numberAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="clw-at-T0n"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t19-ul-gj3">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t19-ul-gj3">
                                                 <rect key="frame" x="306" y="0.0" width="82" height="82"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="t19-ul-gj3" secondAttribute="height" multiplier="1:1" id="PFj-Cr-VnD"/>
@@ -127,7 +127,7 @@
                                                     <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="operatorMult:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5He-AX-AS7"/>
+                                                    <action selector="operatorPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q0e-RY-Qm1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -174,7 +174,7 @@
                                                     <action selector="numberAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rY7-0e-Iyz"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDQ-h8-Ahg">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDQ-h8-Ahg">
                                                 <rect key="frame" x="306" y="0.0" width="82" height="82"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hDQ-h8-Ahg" secondAttribute="height" multiplier="1:1" id="gIS-nE-AjM"/>
@@ -184,7 +184,7 @@
                                                     <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="operatorRes:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ad-UX-AM5"/>
+                                                    <action selector="operatorPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Lw-5o-gMv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -231,7 +231,7 @@
                                                     <action selector="numberAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2CX-fg-c8b"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC5-KB-AtG">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC5-KB-AtG">
                                                 <rect key="frame" x="306" y="0.0" width="82" height="82"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="AC5-KB-AtG" secondAttribute="height" multiplier="1:1" id="9xe-8x-YwR"/>
@@ -241,7 +241,7 @@
                                                     <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="operatorSum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o1o-EB-sab"/>
+                                                    <action selector="operatorPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="szZ-Oo-WTw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -291,6 +291,7 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="operatorEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qzV-h6-BBB"/>
+                                                            <action selector="operatorPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbd-W5-uY1"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

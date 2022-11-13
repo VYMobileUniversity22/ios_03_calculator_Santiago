@@ -65,38 +65,12 @@ class ViewController: UIViewController {
         clear()
     }
 
-    @IBAction func operatorDiv(_ sender: UIButton) {
-        resultado()
-        operating = true
-        operation = .div
-    }
-
-    @IBAction func operatorMult(_ sender: UIButton) {
-        resultado()
-        operating = true
-        operation = .mult
-    }
-
-    @IBAction func operatorRes(_ sender: UIButton) {
-        resultado()
-        operating = true
-        operation = .res
-    }
-
-    @IBAction func operatorSum(_ sender: UIButton) {
-        resultado()
-        operating = true
-        operation = .sum
-    }
-
     @IBAction func operatorEqual(_ sender: UIButton) {
-        resultado()
+        currentResult()
     }
 
     @IBAction func operatorPercent(_ sender: UIButton) {
-        operating = true
-        operation = .percent
-        resultado()
+      operatorType(sender: sender)
     }
 
     @IBAction func operatorDecimal(_ sender: UIButton) {
@@ -142,12 +116,12 @@ class ViewController: UIViewController {
             resultLabel.text = "0"
         } else {
             result = 0
-            resultado()
+            currentResult()
         }
     }
     
     //Cases operators
-    func resultado() {
+    func currentResult() {
         switch operation {
         case .none:
             // no hara nada
@@ -174,6 +148,26 @@ class ViewController: UIViewController {
         }
 
         defaults.set(result, forKey: "resultado")
+    }
+    
+    //Actions for buttons
+    func operatorType(sender:UIButton){
+        switch sender.tag {
+        case 1:
+            operation = .sum
+        case 2:
+            operation = .res
+        case 3:
+            operation = .mult
+        case 4:
+            operation = .div
+        case 5:
+            operation = .percent
+        default:
+            operation = .none
+        }
+        currentResult()
+        operating = true
     }
     
 }
